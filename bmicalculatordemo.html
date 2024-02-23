@@ -1,0 +1,30 @@
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function calculateBMI () {
+                var w = document.getElementById("weight").value;
+                var h = document.getElementById("height").value;
+                var bmi = (w/(h * h));
+                document.getElementById("bmi").innerHTML = bmi;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>BMI Calculator</h1>
+        <label>Weight(kg): </label>
+        <input type="number" step="0.01" name="weight" id="weight" /> 
+        <p> 
+        <label>Height(m): </label>
+        <input type="number" step="0.01" name="height" id="height" />
+        <p>
+        <input type ="button" name="calculateBMI" onclick="calculateBMI();" value="Calculate" />
+        <p>
+        <div>
+        <label>BMI: </label><span id="bmi"></span>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            label {
+                color:blue;
+                font-weight: bold;
+            }
+            h2 {
+                color:red; 
+            }
+            #error {
+                color:red;
+                font-weight: bold;
+                font-size: large;
+            }
+        </style>
+        <script>
+            function calculateBMI() {
+                var w = document.getElementById('weight').value;
+                var message = document.getElementById('error');
+                var errormessage = "";
+                var iserror = false;
+                message.innerHTML = "";
+                try {
+                    if (w == "")
+                        throw "empty";
+                    if (isNaN(w))
+                        throw "not a number";
+                    w = Number(w);
+                } catch (err) {
+                    errormessage += "weight " + err + " ";
+                    iserror = true;
+                }
+                var h = document.getElementById('height').value;
+                try {
+                    if (h == "")
+                        throw "empty";
+                    if (isNaN(h))
+                        throw "not a number";
+                    h = Number(h);
+                } catch (err) {
+                    errormessage += "height " + err;
+                    iserror = true;
+                }
+                if (iserror === true) {
+                    message.innerHTML = "Error : " + errormessage;
+                } else {
+                    var bmi = (w / (h * h));
+                    bmi = bmi.toFixed(2);
+                    document.getElementById('bmi').innerHTML = bmi;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h2>BMI Calculator</h2>
+        <label>Weight:</label>
+        <input type="text"  name="weight" id="weight" placeholder="Enter weight"/>
+        <label>kg</label>
+        <p>
+            <label>Height :</label>
+            <input type="text"  name="height" id="height" placeholder="Enter height"/>
+            <label>m</label>
+        <p>
+            <input type="button" onclick="calculateBMI();" value="Calculate">
+        <div>
+            <label>BMI :</label><span id="bmi"></span>
+            <p>
+                <span id="error"></span>
+        </div>
+    </body>
+</html>
